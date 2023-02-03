@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <style>
+          body {
+              padding-top: 80px;
+          }
+      </style>
+<div class="container2">
+
+<form action="{% url 'request_create' %}" method="post" enctype="multipart/form-data">
+    <div class="container3">
+        <h1>Оставить заявку</h1>
+    {% csrf_token %}
+    {% for f in form %}
+
+    <div>{{form.non_field_errors}}</div>
+    <p><label for="{{ f.id_for_label }}">{{f.label}}: </label>{{f}}</p>
+    <div>{{f.errors}}</div>
+    {% endfor %}
+    <button class="button5" type="submit">Отправить</button>
+        </div>
+</form>
+    </div>
+
+{% endblock %}
